@@ -1,5 +1,16 @@
+* {
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+
 body {
     background-color: gray;
+    /* background-color: #fff;
+background-image:
+linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+linear-gradient(#eee .1em, transparent .1em);
+background-size: 100% 1.2em; */
 	/* Use a system font, if none are available use an available sans-sarif   font */
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -14,6 +25,7 @@ section.board {
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
+  /* background-color: white; */
 }
 
 div {
@@ -21,4 +33,8 @@ div {
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+}
+
+#reset-button {
+  margin: 15px auto;
 }
