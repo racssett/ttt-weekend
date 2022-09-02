@@ -14,7 +14,7 @@ let board, turn, winner
 const squareEls = document.querySelector('section')
 console.log(squareEls);
 
-const messageEl = document.querySelector('2#message')
+const messageEl = document.querySelector('#message')
 console.log(messageEl);
 
 /*----------------------------- Event Listeners -----------------------------*/
