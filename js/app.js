@@ -1,8 +1,16 @@
 /*-------------------------------- Constants --------------------------------*/
 
-//* const for reset button - hide him!
+const winningCombos = [
+    [0, 1, 2], 
+    [3, 4, 5], 
+    [6, 7, 8], 
+    [0, 3, 6], 
+    [1, 4, 7], 
+    [2, 5, 8], 
+    [0, 4, 8], 
+    [2, 4, 6]
+]
 
-//* console.log()
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -11,51 +19,63 @@ let board, turn, winner
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelector('section')
-console.log(squareEls);
+const squareEls = document.querySelectorAll('.square')
+const messageEl = document.getElementById('message')
 
-const messageEl = document.querySelector('#message')
-console.log(messageEl);
+const squares = document.querySelector('.board')
+// const resetBtn = document.querySelector('#reset-button')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-//* event listener for clicking the reset button
-
-//* event listener for clicking each square - parseInt(evt.target.id.replace('sq', '')) bubble!
-
-//* console.log()
+squares.addEventListener('click', handleClick)
+// resetBtn.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
-//* init function - what happens when the game first loads? 
+init()
 
 function init () {
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = null
-    messageEl.textContent = `Start the game`
-    render (init)
+    render ()
 }
 
-console.log(init)
-
-
 function render() {
-    board.forEach(function(element, idx){
-        if (turn === 1) {
-            messageEl.textContent = `X's turn!`
-        } else {
-            messageEl.textContent = `O's turn!`
+    board.forEach(function(value, idx){
+        if (value === 1) {
+            squareEls[idx].textContent = 'X'
+        } if (value === -1) {
+            squareEls[idx].textContent = 'O'
+        } else if (value === null) {
+            squareEls[idx].textContent = ''
         }
     })
-    if (winner = null) {
+    if (winner === null) {
         messageEl.textContent = `Player ${turn}'s turn`
     } else if (winner === 'T') {
         messageEl.textContent = `It's a tie! Rematch?`
+        resetBtn.textContent = 'Rematch'
     } else {
         messageEl.textContent = `Player ${winner} is our winner!`
+        resetBtn.textContent = 'Rematch'
     }
 }
+
+function handleClick(evt) {
+    let sqIdx = parseInt(evt.target.id.replace('sq', ''))
+    if (winner !== null){
+        return
+    } 
+    if (board[sqIdx]){
+        return
+    }
+    board[sqIdx] = turn
+    turn *= -1
+    render()
+}
+
+
 
 
 // FROM LECTURE:
@@ -64,21 +84,3 @@ function render() {
 //     turn *= -1
 // console.log(board)
 // }
-
-//* getWinner
-
-//* console.log()
-
-
-//* hide and unhide your reset button
-
-//* square clicked?
-
-//* three in a row? 
-
-//* turn
-//* player O will be -1, player X will be 1. Multiply turn by -1 and it will flip back and forth
-
-//* winner -- null
-
-//* console.log()
