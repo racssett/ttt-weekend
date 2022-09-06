@@ -1,13 +1,13 @@
 /*-------------------------------- Constants --------------------------------*/
 
 const winningCombos = [
-    [0, 1, 2], 
-    [3, 4, 5], 
-    [6, 7, 8], 
-    [0, 3, 6], 
-    [1, 4, 7], 
-    [2, 5, 8], 
-    [0, 4, 8], 
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
     [2, 4, 6]
 ]
 
@@ -19,7 +19,7 @@ let board, turn, winner
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelectorAll('.square')
+const squareEls = document.querySelectorAll('.board > div')
 const messageEl = document.getElementById('message')
 
 const squares = document.querySelector('.board')
@@ -41,6 +41,41 @@ function init () {
     render ()
 }
 
+
+
+function handleClick(evt) {
+    let sqIdx = parseInt(evt.target.id.replace('sq', ''))
+    console.log(sqIdx)
+    if (winner){
+        return
+    } 
+    if (board[sqIdx]){
+        return
+    }
+    if (isNaN(sqIdx)){
+        return
+    }
+    board[sqIdx] = turn
+    turn *= -1
+    winner = getWinner()
+    render()
+}
+
+function getWinner() {
+    for(let i = 0; i < winningCombos.length; i++) {
+    if (board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]] === 3) {
+        return 1
+    } else if (board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]] === -3) {
+        return -1
+    }
+    }
+    if (board.includes(null) === false) {
+        return 'T'
+    }
+    return null
+}
+
+
 function render() {
     board.forEach(function(value, idx){
         if (value === 1) {
@@ -55,32 +90,15 @@ function render() {
         messageEl.textContent = `Player ${turn}'s turn`
     } else if (winner === 'T') {
         messageEl.textContent = `It's a tie! Rematch?`
-        resetBtn.textContent = 'Rematch'
+        // resetBtn.textContent = 'Rematch'
     } else {
         messageEl.textContent = `Player ${winner} is our winner!`
-        resetBtn.textContent = 'Rematch'
+        // resetBtn.textContent = 'Rematch'
     }
 }
-
-function handleClick(evt) {
-    let sqIdx = parseInt(evt.target.id.replace('sq', ''))
-    if (winner !== null){
-        return
-    } 
-    if (board[sqIdx]){
-        return
-    }
-    board[sqIdx] = turn
-    turn *= -1
-    render()
-}
-
-
-
 
 // FROM LECTURE:
 // function handleClick(evt) {
 //     board[parseInt(evt.target.id.replace('sq', ''))] = turn
 //     turn *= -1
 // console.log(board)
-// }
