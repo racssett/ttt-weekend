@@ -92,7 +92,11 @@ function render() {
         }
     })
     if (winner === null) {
-        messageEl.textContent = `Player ${turn}'s turn`
+       if(turn === 1) {
+        messageEl.textContent = "Player X's turn"
+    } else {
+        messageEl.textContent = "Player O's turn"
+    } 
     } else if (winner === 'T') {
         messageEl.textContent = `It's a tie! Rematch?`
         resetBtn.textContent = 'Rematch'
