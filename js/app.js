@@ -24,6 +24,7 @@ const messageEl = document.getElementById('message')
 
 const squares = document.querySelector('.board')
 const resetBtn = document.querySelector('#reset-button')
+const img = document.getElementById('photo')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -39,6 +40,8 @@ function init () {
     turn = 1
     winner = null
     resetBtn.style.display = 'none'
+    img.style.display = 'none'
+    resetBtn.textContent = 'Reset'
     render ()
 }
 
@@ -96,6 +99,7 @@ function render() {
     } else {
         messageEl.textContent = `Player ${winner} is our winner!`
         resetBtn.textContent = 'Rematch'
+        img.style.display = 'block'
     }
 }
 

@@ -6,11 +6,11 @@
 
 body {
     background-color: gray;
-    /* background-color: #fff;
+    background-color: #fff;
 background-image:
 linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
 linear-gradient(#eee .1em, transparent .1em);
-background-size: 100% 1.2em; */
+background-size: 100% 1.2em;
 	/* Use a system font, if none are available use an available sans-sarif   font */
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -20,12 +20,18 @@ background-size: 100% 1.2em; */
   flex-direction: column;
 }
 
+h1 {
+  text-decoration: palevioletred wavy underline overline;
+  font-family:cursive
+}
+
 section.board {
   display: grid;
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
-  /* background-color: white; */
+  background-color: white;
+  margin: 10px auto;
 }
 
 div {
@@ -33,6 +39,12 @@ div {
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+}
+
+img {
+  margin: auto;
+  max-width: 250px;
+  max-height: auto;
 }
 
 #reset-button {
