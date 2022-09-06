@@ -100,8 +100,11 @@ function render() {
     } else if (winner === 'T') {
         messageEl.textContent = `It's a tie! Rematch?`
         resetBtn.textContent = 'Rematch'
+    } else {       if(turn === 1) {
+        messageEl.textContent = "Player O is our winner!"
     } else {
-        messageEl.textContent = `Player ${winner} is our winner!`
+        messageEl.textContent = "Player X is our winner!"
+    } 
         resetBtn.textContent = 'Rematch'
         img.style.display = 'block'
     }
