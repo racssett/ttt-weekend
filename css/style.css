@@ -22,7 +22,8 @@ background-size: 100% 1.2em;
 
 h1 {
   text-decoration: palevioletred wavy underline overline;
-  font-family:cursive
+  font-family: monospace;
+  font-size: 39px
 }
 
 section.board {
@@ -32,6 +33,7 @@ section.board {
   grid-gap: 0vmin;
   background-color: white;
   margin: 10px auto;
+  font-family:monospace
 }
 
 div {

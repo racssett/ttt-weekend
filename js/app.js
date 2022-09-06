@@ -102,9 +102,3 @@ function render() {
         img.style.display = 'block'
     }
 }
-
-// FROM LECTURE:
-// function handleClick(evt) {
-//     board[parseInt(evt.target.id.replace('sq', ''))] = turn
-//     turn *= -1
-// console.log(board)
