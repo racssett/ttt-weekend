@@ -23,12 +23,12 @@ const squareEls = document.querySelectorAll('.board > div')
 const messageEl = document.getElementById('message')
 
 const squares = document.querySelector('.board')
-// const resetBtn = document.querySelector('#reset-button')
+const resetBtn = document.querySelector('#reset-button')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 squares.addEventListener('click', handleClick)
-// resetBtn.addEventListener('click', init)
+resetBtn.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -38,6 +38,7 @@ function init () {
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = null
+    resetBtn.style.display = 'none'
     render ()
 }
 
@@ -57,6 +58,7 @@ function handleClick(evt) {
     }
     board[sqIdx] = turn
     turn *= -1
+    resetBtn.style.display = 'block'
     winner = getWinner()
     render()
 }
@@ -90,10 +92,10 @@ function render() {
         messageEl.textContent = `Player ${turn}'s turn`
     } else if (winner === 'T') {
         messageEl.textContent = `It's a tie! Rematch?`
-        // resetBtn.textContent = 'Rematch'
+        resetBtn.textContent = 'Rematch'
     } else {
         messageEl.textContent = `Player ${winner} is our winner!`
-        // resetBtn.textContent = 'Rematch'
+        resetBtn.textContent = 'Rematch'
     }
 }
 
